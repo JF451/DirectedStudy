@@ -20,9 +20,6 @@ class DbHelper {
     func createDB() -> OpaquePointer?{
         
         
-        let filePath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathExtension(path)
-        
-        
         var db : OpaquePointer?
         
         guard sqlite3_open(path, &db) == SQLITE_OK else {
@@ -33,8 +30,6 @@ class DbHelper {
         }
         
         return db
-                
-            
     }
     
     func select(_ select : String)
@@ -50,6 +45,29 @@ class DbHelper {
           } else {
             print("\nFAILED.")
           }
+    }
+    
+    func getPictures() -> Array<String>
+    {
+        var pictures: [String] = []
+        
+        let queryString = "select photo_image_url from unsplash_photos"
+        
+        var statement: OpaquePointer?
+        
+        if(sqlite3_prepare(db, queryString, -1, &statement, nil)) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+                print("error preparing select: \(errmsg)")
+        }
+        
+        var _ = sqlite3_step(statement)
+        
+        while(sqlite3_step(statement) == SQLITE_ROW) {
+                let image_url = String(cString: sqlite3_column_text(statement, 0))
+                pictures.append(image_url)
+        }
+        
+        return pictures
     }
     
     func copyDatabaseIfNeeded(_ database: String) {

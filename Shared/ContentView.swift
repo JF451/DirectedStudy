@@ -9,14 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var db = DbHelper().select("select * from unsplash_photos limit 3")
+    var pictureURL = DbHelper().getPictures()
+    
     
     
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        List(pictureURL, id: \.self) { photo in
+            HStack{
+                if #available(iOS 15.0, *) {
+                    AsyncImage(url: URL(string: photo), scale: 10.0)
+                } else {
+                    // Fallback on earlier versions
+                }
+            }
+        }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
