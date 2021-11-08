@@ -18,8 +18,6 @@ class DbHelper {
     }
     
     func createDB() -> OpaquePointer?{
-        
-        
         var db : OpaquePointer?
         
         guard sqlite3_open(path, &db) == SQLITE_OK else {
@@ -30,21 +28,6 @@ class DbHelper {
         }
         
         return db
-    }
-    
-    func select(_ select : String)
-    {
-        let createTableString = select
-        
-        var createTableStatement: OpaquePointer?
-          // 2
-          if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) ==
-              SQLITE_OK {
-            // 3
-            print("\nSUCCESS")
-          } else {
-            print("\nFAILED.")
-          }
     }
     
     func getPictures() -> Array<String>
@@ -66,6 +49,15 @@ class DbHelper {
                 let image_url = String(cString: sqlite3_column_text(statement, 0))
                 pictures.append(image_url)
         }
+        
+        //Check any errors
+        if sqlite3_step(statement) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("rc = ", sqlite3_step(statement) , "error = ", errmsg)
+        }
+        
+        //cleanup query
+        sqlite3_finalize(statement)
         
         return pictures
     }

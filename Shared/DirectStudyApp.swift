@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct DirectStudyApp: App {
+    @StateObject var authenticator = Authenticator()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environmentObject(authenticator)
+            //ContentView()
         }
     }
 }

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D711BA52738A50600DBEB95 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D711BA42738A50600DBEB95 /* LoginView.swift */; };
+		9D711BA72738C4F000DBEB95 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D711BA62738C4F000DBEB95 /* Authenticator.swift */; };
+		9D711BA92738C57800DBEB95 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D711BA82738C57800DBEB95 /* RootView.swift */; };
+		9D711BAB2738CCB500DBEB95 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D711BAA2738CCB500DBEB95 /* SignUpView.swift */; };
 		9DCADEB82726032900F3570F /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCADEB72726032900F3570F /* Tests_iOS.swift */; };
 		9DCADEBA2726032900F3570F /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCADEB92726032900F3570F /* Tests_iOSLaunchTests.swift */; };
 		9DCADEC42726032900F3570F /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCADEC32726032900F3570F /* Tests_macOS.swift */; };
@@ -14,7 +18,6 @@
 		9DCADEC72726032900F3570F /* DirectStudyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCADE9F2726032600F3570F /* DirectStudyApp.swift */; };
 		9DCADEC82726032900F3570F /* DirectStudyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCADE9F2726032600F3570F /* DirectStudyApp.swift */; };
 		9DCADEC92726032900F3570F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCADEA02726032600F3570F /* ContentView.swift */; };
-		9DCADECA2726032900F3570F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCADEA02726032600F3570F /* ContentView.swift */; };
 		9DCADECB2726032900F3570F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DCADEA12726032900F3570F /* Assets.xcassets */; };
 		9DCADECC2726032900F3570F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DCADEA12726032900F3570F /* Assets.xcassets */; };
 		9DCADEDD2726038700F3570F /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9DCADEDC2726038700F3570F /* SDWebImageSwiftUI */; };
@@ -42,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D711BA42738A50600DBEB95 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		9D711BA62738C4F000DBEB95 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
+		9D711BA82738C57800DBEB95 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		9D711BAA2738CCB500DBEB95 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		9DCADE9F2726032600F3570F /* DirectStudyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectStudyApp.swift; sourceTree = "<group>"; };
 		9DCADEA02726032600F3570F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9DCADEA12726032900F3570F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,9 +98,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D711BA32738898B00DBEB95 /* Views  */ = {
+			isa = PBXGroup;
+			children = (
+				9DCADEA02726032600F3570F /* ContentView.swift */,
+				9D711BA42738A50600DBEB95 /* LoginView.swift */,
+				9D711BA82738C57800DBEB95 /* RootView.swift */,
+				9D711BAA2738CCB500DBEB95 /* SignUpView.swift */,
+			);
+			path = "Views ";
+			sourceTree = "<group>";
+		};
 		9DCADE992726032600F3570F = {
 			isa = PBXGroup;
 			children = (
+				9D711BA62738C4F000DBEB95 /* Authenticator.swift */,
+				9D711BA32738898B00DBEB95 /* Views  */,
 				9DCADE9E2726032600F3570F /* Shared */,
 				9DCADEAD2726032900F3570F /* macOS */,
 				9DCADEB62726032900F3570F /* Tests iOS */,
@@ -107,7 +127,6 @@
 			children = (
 				9DCADEE1272618A500F3570F /* Photos.sqlite */,
 				9DCADE9F2726032600F3570F /* DirectStudyApp.swift */,
-				9DCADEA02726032600F3570F /* ContentView.swift */,
 				9DCADEA12726032900F3570F /* Assets.xcassets */,
 				9DCADEDE2726082B00F3570F /* DbHelper.swift */,
 			);
@@ -317,8 +336,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D711BA72738C4F000DBEB95 /* Authenticator.swift in Sources */,
 				9DCADEC92726032900F3570F /* ContentView.swift in Sources */,
+				9D711BA92738C57800DBEB95 /* RootView.swift in Sources */,
+				9D711BAB2738CCB500DBEB95 /* SignUpView.swift in Sources */,
 				9DCADEDF2726082B00F3570F /* DbHelper.swift in Sources */,
+				9D711BA52738A50600DBEB95 /* LoginView.swift in Sources */,
 				9DCADEC72726032900F3570F /* DirectStudyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,7 +350,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DCADECA2726032900F3570F /* ContentView.swift in Sources */,
 				9DCADEE02726082B00F3570F /* DbHelper.swift in Sources */,
 				9DCADEC82726032900F3570F /* DirectStudyApp.swift in Sources */,
 			);
