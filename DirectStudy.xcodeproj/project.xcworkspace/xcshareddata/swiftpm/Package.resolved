@@ -18,6 +18,15 @@
           "revision": "336d3f6d3b53729c1f274bf6b75f4532ada116eb",
           "version": null
         }
+      },
+      {
+        "package": "StarRating",
+        "repositoryURL": "https://github.com/dkk/StarRating",
+        "state": {
+          "branch": null,
+          "revision": "89dba504097ddd4166bb118d615e201619a1602f",
+          "version": "2.0.0"
+        }
       }
     ]
   },

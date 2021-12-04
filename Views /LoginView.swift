@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LoginView: View {
   @EnvironmentObject var authenticator: Authenticator
+  @EnvironmentObject var model : GlobalModel
 
   @State private var userName: String = ""
   @State private var password: String = ""
@@ -29,6 +30,8 @@ struct LoginView: View {
           .textFieldStyle(RoundedBorderTextFieldStyle())
         Button(authenticator.isAuthenticating ? "Please wait" : "Log in"
 ) {
+            //Update Environment Variable to the user name
+            model.usrName = userName
           authenticator.login(username: userName, password: password)
         }
         .disabled(isLoginDisabled)
@@ -64,5 +67,6 @@ struct LoginView_Previews: PreviewProvider {
   static var previews: some View {
     LoginView()
       .environmentObject(Authenticator())
+      .environmentObject(GlobalModel())
   }
 }

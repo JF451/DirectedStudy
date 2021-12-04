@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D58C1E227531C7600980941 /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D58C1E127531C7600980941 /* UserDatabase.swift */; };
+		9D58C1E327531C7600980941 /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D58C1E127531C7600980941 /* UserDatabase.swift */; };
+		9D58C1E52753216600980941 /* Users.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9D58C1E42753216600980941 /* Users.sqlite */; };
+		9D58C1E62753216600980941 /* Users.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9D58C1E42753216600980941 /* Users.sqlite */; };
+		9D58C1E82754BB4D00980941 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D58C1E72754BB4D00980941 /* RatingView.swift */; };
+		9D58C1E92754BB4D00980941 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D58C1E72754BB4D00980941 /* RatingView.swift */; };
+		9D58C1EC275AFC3D00980941 /* StarRating in Frameworks */ = {isa = PBXBuildFile; productRef = 9D58C1EB275AFC3D00980941 /* StarRating */; };
 		9D711BA52738A50600DBEB95 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D711BA42738A50600DBEB95 /* LoginView.swift */; };
 		9D711BA72738C4F000DBEB95 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D711BA62738C4F000DBEB95 /* Authenticator.swift */; };
 		9D711BA92738C57800DBEB95 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D711BA82738C57800DBEB95 /* RootView.swift */; };
@@ -45,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D58C1E127531C7600980941 /* UserDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabase.swift; sourceTree = "<group>"; };
+		9D58C1E42753216600980941 /* Users.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Users.sqlite; sourceTree = SOURCE_ROOT; };
+		9D58C1E72754BB4D00980941 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		9D711BA42738A50600DBEB95 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9D711BA62738C4F000DBEB95 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		9D711BA82738C57800DBEB95 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -71,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DCADEDD2726038700F3570F /* SDWebImageSwiftUI in Frameworks */,
+				9D58C1EC275AFC3D00980941 /* StarRating in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +116,7 @@
 				9D711BA42738A50600DBEB95 /* LoginView.swift */,
 				9D711BA82738C57800DBEB95 /* RootView.swift */,
 				9D711BAA2738CCB500DBEB95 /* SignUpView.swift */,
+				9D58C1E72754BB4D00980941 /* RatingView.swift */,
 			);
 			path = "Views ";
 			sourceTree = "<group>";
@@ -125,10 +137,12 @@
 		9DCADE9E2726032600F3570F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				9D58C1E42753216600980941 /* Users.sqlite */,
 				9DCADEE1272618A500F3570F /* Photos.sqlite */,
 				9DCADE9F2726032600F3570F /* DirectStudyApp.swift */,
 				9DCADEA12726032900F3570F /* Assets.xcassets */,
 				9DCADEDE2726082B00F3570F /* DbHelper.swift */,
+				9D58C1E127531C7600980941 /* UserDatabase.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -188,6 +202,7 @@
 			name = "DirectStudy (iOS)";
 			packageProductDependencies = (
 				9DCADEDC2726038700F3570F /* SDWebImageSwiftUI */,
+				9D58C1EB275AFC3D00980941 /* StarRating */,
 			);
 			productName = "DirectStudy (iOS)";
 			productReference = 9DCADEA62726032900F3570F /* DirectStudy.app */;
@@ -283,6 +298,7 @@
 			mainGroup = 9DCADE992726032600F3570F;
 			packageReferences = (
 				9DCADEDB2726038600F3570F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				9D58C1EA275AFC3D00980941 /* XCRemoteSwiftPackageReference "StarRating" */,
 			);
 			productRefGroup = 9DCADEA72726032900F3570F /* Products */;
 			projectDirPath = "";
@@ -301,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D58C1E52753216600980941 /* Users.sqlite in Resources */,
 				9DCADEE2272618DC00F3570F /* Photos.sqlite in Resources */,
 				9DCADECB2726032900F3570F /* Assets.xcassets in Resources */,
 			);
@@ -310,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D58C1E62753216600980941 /* Users.sqlite in Resources */,
 				9DCADEE32726191100F3570F /* Photos.sqlite in Resources */,
 				9DCADECC2726032900F3570F /* Assets.xcassets in Resources */,
 			);
@@ -337,7 +355,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D711BA72738C4F000DBEB95 /* Authenticator.swift in Sources */,
+				9D58C1E227531C7600980941 /* UserDatabase.swift in Sources */,
 				9DCADEC92726032900F3570F /* ContentView.swift in Sources */,
+				9D58C1E82754BB4D00980941 /* RatingView.swift in Sources */,
 				9D711BA92738C57800DBEB95 /* RootView.swift in Sources */,
 				9D711BAB2738CCB500DBEB95 /* SignUpView.swift in Sources */,
 				9DCADEDF2726082B00F3570F /* DbHelper.swift in Sources */,
@@ -352,6 +372,8 @@
 			files = (
 				9DCADEE02726082B00F3570F /* DbHelper.swift in Sources */,
 				9DCADEC82726032900F3570F /* DirectStudyApp.swift in Sources */,
+				9D58C1E327531C7600980941 /* UserDatabase.swift in Sources */,
+				9D58C1E92754BB4D00980941 /* RatingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,6 +781,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9D58C1EA275AFC3D00980941 /* XCRemoteSwiftPackageReference "StarRating" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/StarRating";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		9DCADEDB2726038600F3570F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -770,6 +800,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9D58C1EB275AFC3D00980941 /* StarRating */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D58C1EA275AFC3D00980941 /* XCRemoteSwiftPackageReference "StarRating" */;
+			productName = StarRating;
+		};
 		9DCADEDC2726038700F3570F /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9DCADEDB2726038600F3570F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

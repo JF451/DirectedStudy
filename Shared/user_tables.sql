@@ -9,7 +9,7 @@ create table Users(
 create table Rating (
 	RatingID INTEGER PRIMARY KEY AUTOINCREMENT,
 	Picture VARCHAR(50),
-	Rating INTEGER,
+	Rating VARCHAR(50),
 	UserID_fk INTEGER,
 	foreign key(UserID_fk) references Users(UserID) 
 );
