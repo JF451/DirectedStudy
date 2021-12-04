@@ -1,0 +1,42 @@
+import csv
+import random
+import sqlite3
+
+header = ['Picture','Rating']
+
+ratings = [0.0, .5, 1.0, 1.5, 2.0, 2.5]
+
+with open('data.csv','w',encoding='UTF8') as f:
+	writer = csv.writer(f)
+	
+	# write header
+	writer.writerow(header)
+
+	#Open DataBase
+	con = sqlite3.connect("/Users/justinfulkerson/dev/DirectStudy/Shared/Photos.sqlite")
+
+	cur = con.cursor()
+
+	#Iterate Over a row
+	for row in cur.execute('SELECT photo_image_url FROM unsplash_photos limit 5000'):
+		#get picture
+		picture = row
+
+		#get random index
+		index = random.randint(0,5)
+		
+		#Get rating from ratings array
+		rating = ratings[index]
+
+		#encapsulate data
+		data = [row,rating]
+	
+		#enter data into csv
+		writer.writerow(data)
+		
+
+	#Close DB
+	con.close()
+
+
+	
