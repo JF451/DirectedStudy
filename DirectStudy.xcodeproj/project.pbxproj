@@ -11,8 +11,6 @@
 		9D58C1E327531C7600980941 /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D58C1E127531C7600980941 /* UserDatabase.swift */; };
 		9D58C1E52753216600980941 /* Users.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9D58C1E42753216600980941 /* Users.sqlite */; };
 		9D58C1E62753216600980941 /* Users.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9D58C1E42753216600980941 /* Users.sqlite */; };
-		9D58C1E82754BB4D00980941 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D58C1E72754BB4D00980941 /* RatingView.swift */; };
-		9D58C1E92754BB4D00980941 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D58C1E72754BB4D00980941 /* RatingView.swift */; };
 		9D58C1EC275AFC3D00980941 /* StarRating in Frameworks */ = {isa = PBXBuildFile; productRef = 9D58C1EB275AFC3D00980941 /* StarRating */; };
 		9D711BA52738A50600DBEB95 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D711BA42738A50600DBEB95 /* LoginView.swift */; };
 		9D711BA72738C4F000DBEB95 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D711BA62738C4F000DBEB95 /* Authenticator.swift */; };
@@ -32,6 +30,8 @@
 		9DCADEE02726082B00F3570F /* DbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCADEDE2726082B00F3570F /* DbHelper.swift */; };
 		9DCADEE2272618DC00F3570F /* Photos.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9DCADEE1272618A500F3570F /* Photos.sqlite */; };
 		9DCADEE32726191100F3570F /* Photos.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9DCADEE1272618A500F3570F /* Photos.sqlite */; };
+		9DF9C1D6275C2C0A00D2C39D /* PicRecommender.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9DF9C1D5275C2C0A00D2C39D /* PicRecommender.mlmodel */; };
+		9DF9C1D7275C2C0A00D2C39D /* PicRecommender.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9DF9C1D5275C2C0A00D2C39D /* PicRecommender.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,6 @@
 /* Begin PBXFileReference section */
 		9D58C1E127531C7600980941 /* UserDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabase.swift; sourceTree = "<group>"; };
 		9D58C1E42753216600980941 /* Users.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Users.sqlite; sourceTree = SOURCE_ROOT; };
-		9D58C1E72754BB4D00980941 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		9D711BA42738A50600DBEB95 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9D711BA62738C4F000DBEB95 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		9D711BA82738C57800DBEB95 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -73,6 +72,7 @@
 		9DCADEC52726032900F3570F /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		9DCADEDE2726082B00F3570F /* DbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbHelper.swift; sourceTree = "<group>"; };
 		9DCADEE1272618A500F3570F /* Photos.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Photos.sqlite; sourceTree = "<group>"; };
+		9DF9C1D5275C2C0A00D2C39D /* PicRecommender.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PicRecommender.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,6 @@
 				9D711BA42738A50600DBEB95 /* LoginView.swift */,
 				9D711BA82738C57800DBEB95 /* RootView.swift */,
 				9D711BAA2738CCB500DBEB95 /* SignUpView.swift */,
-				9D58C1E72754BB4D00980941 /* RatingView.swift */,
 			);
 			path = "Views ";
 			sourceTree = "<group>";
@@ -124,6 +123,7 @@
 		9DCADE992726032600F3570F = {
 			isa = PBXGroup;
 			children = (
+				9DF9C1D5275C2C0A00D2C39D /* PicRecommender.mlmodel */,
 				9D711BA62738C4F000DBEB95 /* Authenticator.swift */,
 				9D711BA32738898B00DBEB95 /* Views  */,
 				9DCADE9E2726032600F3570F /* Shared */,
@@ -354,10 +354,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF9C1D6275C2C0A00D2C39D /* PicRecommender.mlmodel in Sources */,
 				9D711BA72738C4F000DBEB95 /* Authenticator.swift in Sources */,
 				9D58C1E227531C7600980941 /* UserDatabase.swift in Sources */,
 				9DCADEC92726032900F3570F /* ContentView.swift in Sources */,
-				9D58C1E82754BB4D00980941 /* RatingView.swift in Sources */,
 				9D711BA92738C57800DBEB95 /* RootView.swift in Sources */,
 				9D711BAB2738CCB500DBEB95 /* SignUpView.swift in Sources */,
 				9DCADEDF2726082B00F3570F /* DbHelper.swift in Sources */,
@@ -372,8 +372,8 @@
 			files = (
 				9DCADEE02726082B00F3570F /* DbHelper.swift in Sources */,
 				9DCADEC82726032900F3570F /* DirectStudyApp.swift in Sources */,
+				9DF9C1D7275C2C0A00D2C39D /* PicRecommender.mlmodel in Sources */,
 				9D58C1E327531C7600980941 /* UserDatabase.swift in Sources */,
-				9D58C1E92754BB4D00980941 /* RatingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -60,6 +60,7 @@ class DbHelper {
                     let image_url = String(cString: sqlite3_column_text(statement, 0))
                 pictures.append(pictureObject(photo: image_url, rating: 0))
                 
+                
             }
             
             //Check any errors

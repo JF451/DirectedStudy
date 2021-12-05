@@ -38,7 +38,6 @@ func insertRating(rating: Double,usrname: String,picture: String) {
 }
 
 
-
 struct ContentView: View {
     
     @EnvironmentObject var authenticator: Authenticator
@@ -46,8 +45,21 @@ struct ContentView: View {
     @State private var rating: Int = 0
     
     @EnvironmentObject var model: GlobalModel
-    
+
     @State private var filtered: Bool = false
+    
+    /*
+    @State private var inputToModel : [String : Double] = ["https://images.unsplash.com/uploads/14119492946973137ce46/f1f2ebf3" : 2.0,"https://images.unsplash.com/photo-1416339411116-62e1226aacd8" : 2.5]
+    
+     */
+    @State private var inputToModel = [String : Double]()
+    
+    
+    @State private var recommendedPictures : [String] = []
+    @State private var  showRecommendedPictures : Bool = false
+    
+    
+    
     
     var body: some View {
         
@@ -55,19 +67,96 @@ struct ContentView: View {
             filtered = true
         }
         
+        Button("Show Recommended Pictures"){
+            
+            showRecommendedPictures = true
+            
+            
+            //Get picture/rating input from Ratings Table for a given user
+            
+            //Open Database
+            let userDB = UserDatabase().createDB()
+            
+            let queryStatementString = "SELECT Picture,Rating FROM rating WHERE UserID_fk IN (SELECT UserID from Users WHERE Username = '" + model.usrName + "' )"
+            
+            var queryStatement: OpaquePointer?
+            
+            if sqlite3_prepare_v2(userDB, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+                while (sqlite3_step(queryStatement) == SQLITE_ROW) {
+                    guard let queryResultCol1 = sqlite3_column_text(queryStatement, 0) else {
+                            print("Query result is nil")
+                            return
+                          }
+                    guard let queryResultCol2 = sqlite3_column_text(queryStatement, 1) else {
+                            print("Query result is nil")
+                            return
+                          }
+                    
+                    let pic = String(cString: queryResultCol1)
+                    let rating = String(cString: queryResultCol2)
+                    
+                    inputToModel[pic] = Double(rating)
+                }
+            }
+            
+            
+            //Give input input into model with hashmap values
+            let input = PicRecommenderInput(items: inputToModel, k: 5)
+            
+            //Predict based on the input
+            guard let result = try? PicRecommender().prediction(input: input) else {
+                fatalError("Could not get results back")
+            }
+            
+            //Get the pictures from the result
+            let results = result.scores
+            
+            
+            for (key,value) in results {
+                let pic = String( key.dropLast().dropLast().dropFirst().dropFirst().dropLast())
+                print(pic)
+                recommendedPictures.append(pic)
+            }
+            
+            sqlite3_finalize(queryStatement)
+            
+            sqlite3_close(userDB)
+        }
+        
         //Open Database normally
         var pictureURL = DbHelper().getPictures(usrname: model.usrName, isFiltered: filtered)
+        
+        if(showRecommendedPictures == true){
+            NavigationView{
+                List(recommendedPictures, id: \.self){ pic in
+                    LazyVStack {
+                        if #available(iOS 15.0, *) {
+                            AsyncImage(url: URL(string: pic), scale: 15.0)
+                        } else {
+                            // Fallback on earlier versions
+                        }
+                    }
+                }.navigationBarTitle("Recommended Pictures")
+                    .navigationBarHidden(false)
+                    .navigationBarItems(leading: Button(action: {showRecommendedPictures = false}){
+                        Image(systemName: "arrow.left")
+                        Text("Back")
+                    })
+            }
+        }
         
         List(pictureURL, id: \.self) { pic in
             //For each photo in pictureURL
                 //Associate with a rating clikced on by the user
             
-            VStack{
+            LazyVStack{
                 if #available(iOS 15.0, *) {
                     AsyncImage(url: URL(string: pic.photo), scale: 10.0)
                 } else {
                     // Fallback on earlier versions
                 }
+                
+                Star(vertices: 5, weight: 1.0)
                 StarRating(initialRating: 0,onRatingChanged: {
                     insertRating(rating: $0, usrname: model.usrName, picture: pic.photo)
                     
@@ -77,6 +166,7 @@ struct ContentView: View {
         Button("Logout") {
             authenticator.logout()
         }
+        
     }
 }
 
