@@ -40,24 +40,20 @@ class Authenticator: ObservableObject {
       
     self.isAuthenticating = true
       
+      let userDBObject = UserDatabase()
+      
       //Open database for validation
-      let userDB = UserDatabase().createDB()
+      let userDB = userDBObject.createDB()
       
       
       //Open Database for filtering
       //let photoDB = DbHelper().getPictures(usrName: username)
-      
-      if checkUser(db: userDB,un: username,pw: password) == true {
-          print("Login Succeeded")
-          // emulate a short delay when authenticating
-          DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+
             self.isAuthenticating = false
             self.needsAuthentication = false
-          }
-      }else {
-         print("Login Failed")
-      }
-      sqlite3_close(userDB)
+      
+      print(userDBObject.UserDBCounter)
+      userDBObject.close()
   }
 
   func logout() {

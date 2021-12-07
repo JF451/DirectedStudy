@@ -11,31 +11,34 @@ import SQLite3
 
 
 func insertRating(rating: Double,usrname: String,picture: String) {
+    
+    
     //Open up Users database
-    let userDB = UserDatabase().createDB()
+    let userDBObject = UserDatabase();
+    
+    let userDB = userDBObject.createDB()
     
     print(rating,usrname,picture)
     
     
     let insertStatementString = "insert into Rating (Picture,Rating,UserID_fk) values('" + picture + "','" + String(rating)  + "',(select UserID from Users where Username = '" + usrname + "'))"
     
-    var insertStatement: OpaquePointer?
+    var insertStatement: OpaquePointer? = nil
     
-    if sqlite3_prepare_v2(userDB, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK{
-        
-        if sqlite3_step(insertStatement) == SQLITE_DONE {
+    if sqlite3_prepare_v2(userDB, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+        if sqlite3_step(insertStatement) == SQLITE_DONE{
             print("Inserted Row")
         } else{
             print(sqlite3_errmsg(insertStatement))
             print("Could not insert row")
         }
         
-    } else {
-        print("Insert statement not prepared")
     }
-        sqlite3_finalize(insertStatement)
     
-        sqlite3_close(userDB)
+    do { sqlite3_finalize(insertStatement) }
+    
+    print(userDBObject.UserDBCounter)
+    userDBObject.close()
 }
 
 
@@ -74,7 +77,9 @@ struct ContentView: View {
             //Get picture/rating input from Ratings Table for a given user
             
             //Open Database
-            let userDB = UserDatabase().createDB()
+            let userDBObject = UserDatabase()
+            
+            let userDB = userDBObject.createDB()
             
             let queryStatementString = "SELECT Picture,Rating FROM rating WHERE UserID_fk IN (SELECT UserID from Users WHERE Username = '" + model.usrName + "' )"
             
@@ -118,7 +123,7 @@ struct ContentView: View {
             
             sqlite3_finalize(queryStatement)
             
-            sqlite3_close(userDB)
+            userDBObject.close()
         }
         
         //Open Database normally
@@ -153,12 +158,11 @@ struct ContentView: View {
                 } else {
                     // Fallback on earlier versions
                 }
-                
-                Star(vertices: 5, weight: 1.0)
                 StarRating(initialRating: 0,onRatingChanged: {
                     insertRating(rating: $0, usrname: model.usrName, picture: pic.photo)
                     
                 })
+                            
             }
         }
         Button("Logout") {

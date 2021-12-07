@@ -10,11 +10,21 @@ import SQLite3
 
 class UserDatabase{
     
+    var UserDBCounter: Int = 0
+    
     var db: OpaquePointer?
     var path = "/Users/justinfulkerson/dev/DirectedStudy/DirectedStudy/Shared/Users.sqlite"
     init(){
         self.db = createDB()
         
+    }
+    
+    func close(){
+        UserDBCounter-=1
+        if(UserDBCounter == 0)
+        {
+            sqlite3_close(db)
+        }
     }
     
     func createDB() -> OpaquePointer?{
@@ -26,7 +36,7 @@ class UserDatabase{
             db = nil
             return nil
         }
-        
+        UserDBCounter+=1
         return db
     }
     

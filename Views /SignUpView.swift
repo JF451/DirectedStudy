@@ -132,8 +132,10 @@ struct SignUpView: View {
 
 func handleInterest(theme: String,usrname: String)
 {
+    let userDBObject = UserDatabase()
+    
     //open database
-    let userDB = UserDatabase().createDB()
+    let userDB = userDBObject.createDB()
     
     let queryStatementString = "insert into Interests (interest,UserID_fk) values('" + theme + "'," + "(select UserID from Users where Username = '" + usrname + "'))"
     
@@ -144,6 +146,7 @@ func handleInterest(theme: String,usrname: String)
         if sqlite3_step(queryStatement) == SQLITE_DONE {
             print("Inserted Row")
         } else{
+            print(sqlite3_errmsg(queryStatement))
             print("Could not insert row")
         }
         
@@ -152,7 +155,7 @@ func handleInterest(theme: String,usrname: String)
     }
         sqlite3_finalize(queryStatement)
     
-    sqlite3_close(userDB)
+    userDBObject.close()
 }
 
 func doesExist(db: OpaquePointer?,passwd:String,username:String) -> Bool
@@ -171,8 +174,10 @@ func doesExist(db: OpaquePointer?,passwd:String,username:String) -> Bool
 
 func handleSubmit(usrname:String,pass:String)
 {
+    let userDBObject = UserDatabase()
+    
     //open database
-    let userDB = UserDatabase().createDB()
+    let userDB = userDBObject.createDB()
     
 
     
@@ -199,7 +204,7 @@ func handleSubmit(usrname:String,pass:String)
         }
         sqlite3_finalize(insertStatement)
         //close database
-        sqlite3_close(userDB)
+        userDBObject.close()
     
 }
 

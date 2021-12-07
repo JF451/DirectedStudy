@@ -10,6 +10,8 @@ import SQLite3
 
 class DbHelper {
     
+    var PhotoDBCounter: Int = 0
+    
     var db: OpaquePointer?
     var path: String = "/Users/justinfulkerson/dev/DirectedStudy/DirectedStudy/Shared/Photos.sqlite"
     init(){
@@ -27,6 +29,15 @@ class DbHelper {
         }
     }
     
+    func close()
+    {
+        PhotoDBCounter-=1
+        if(PhotoDBCounter == 0)
+        {
+            sqlite3_close(db)
+        }
+    }
+    
     func createDB() -> OpaquePointer?{
         var db : OpaquePointer?
         
@@ -36,6 +47,8 @@ class DbHelper {
             db = nil
             return nil
         }
+        
+        PhotoDBCounter+=1
         
         return db
     }
@@ -72,8 +85,10 @@ class DbHelper {
             //cleanup query
             sqlite3_finalize(statement)
             
+            
+            
             //Close DB aftet pictures are returned
-            sqlite3_close(db)
+            self.close()
             
             return pictures
         }else {
@@ -81,8 +96,10 @@ class DbHelper {
             //Array of Strings to return
             var pictures: [pictureObject] = []
             
+            let userDBObject = UserDatabase()
+            
             //Open User Database to search for interest for a given user
-            let userDB = UserDatabase().createDB()
+            let userDB = userDBObject.createDB()
             
             let userSelect = "SELECT interest FROM Interests WHERE UserID_fk IN (SELECT UserID FROM Users WHERE Username =  '" + usrname + "')"
             
@@ -126,10 +143,10 @@ class DbHelper {
             sqlite3_finalize(userStatement)
             
             //Close Photos DB after pictures are returned
-            sqlite3_close(db)
+            self.close()
             
             //Close User DB after pictures are returned
-            sqlite3_close(userDB)
+            userDBObject.close()
             
             return pictures
         }
