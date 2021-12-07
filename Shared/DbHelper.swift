@@ -11,7 +11,7 @@ import SQLite3
 class DbHelper {
     
     var db: OpaquePointer?
-    var path: String = "/Users/justinfulkerson/dev/DirectStudy/Shared/Photos.sqlite"
+    var path: String = "/Users/justinfulkerson/dev/DirectedStudy/DirectedStudy/Shared/Photos.sqlite"
     init(){
         self.db = createDB()
         
@@ -31,7 +31,7 @@ class DbHelper {
         var db : OpaquePointer?
         
         guard sqlite3_open(path, &db) == SQLITE_OK else {
-            print("error opening database")
+            print("error opening database Photos DB")
             sqlite3_close(db)
             db = nil
             return nil
@@ -71,6 +71,9 @@ class DbHelper {
             
             //cleanup query
             sqlite3_finalize(statement)
+            
+            //Close DB aftet pictures are returned
+            sqlite3_close(db)
             
             return pictures
         }else {
@@ -121,6 +124,12 @@ class DbHelper {
             }
             
             sqlite3_finalize(userStatement)
+            
+            //Close Photos DB after pictures are returned
+            sqlite3_close(db)
+            
+            //Close User DB after pictures are returned
+            sqlite3_close(userDB)
             
             return pictures
         }

@@ -26,6 +26,7 @@ func insertRating(rating: Double,usrname: String,picture: String) {
         if sqlite3_step(insertStatement) == SQLITE_DONE {
             print("Inserted Row")
         } else{
+            print(sqlite3_errmsg(insertStatement))
             print("Could not insert row")
         }
         
@@ -48,10 +49,6 @@ struct ContentView: View {
 
     @State private var filtered: Bool = false
     
-    /*
-    @State private var inputToModel : [String : Double] = ["https://images.unsplash.com/uploads/14119492946973137ce46/f1f2ebf3" : 2.0,"https://images.unsplash.com/photo-1416339411116-62e1226aacd8" : 2.5]
-    
-     */
     @State private var inputToModel = [String : Double]()
     
     
@@ -62,6 +59,8 @@ struct ContentView: View {
     
     
     var body: some View {
+        
+        
         
         Button("Filter Pictures"){
             filtered = true
@@ -111,8 +110,7 @@ struct ContentView: View {
             //Get the pictures from the result
             let results = result.scores
             
-            
-            for (key,value) in results {
+            for (key,_) in results {
                 let pic = String( key.dropLast().dropLast().dropFirst().dropFirst().dropLast())
                 print(pic)
                 recommendedPictures.append(pic)
@@ -124,7 +122,7 @@ struct ContentView: View {
         }
         
         //Open Database normally
-        var pictureURL = DbHelper().getPictures(usrname: model.usrName, isFiltered: filtered)
+        let pictureURL = DbHelper().getPictures(usrname: model.usrName, isFiltered: filtered)
         
         if(showRecommendedPictures == true){
             NavigationView{

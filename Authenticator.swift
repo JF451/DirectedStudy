@@ -57,6 +57,7 @@ class Authenticator: ObservableObject {
       }else {
          print("Login Failed")
       }
+      sqlite3_close(userDB)
   }
 
   func logout() {

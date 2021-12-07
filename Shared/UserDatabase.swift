@@ -11,7 +11,7 @@ import SQLite3
 class UserDatabase{
     
     var db: OpaquePointer?
-    var path = "/Users/justinfulkerson/dev/DirectStudy/Shared/Users.sqlite"
+    var path = "/Users/justinfulkerson/dev/DirectedStudy/DirectedStudy/Shared/Users.sqlite"
     init(){
         self.db = createDB()
         
@@ -21,7 +21,7 @@ class UserDatabase{
         var db : OpaquePointer?
         
         guard sqlite3_open(path, &db) == SQLITE_OK else {
-            print("error opening database")
+            print("error opening database users DB")
             sqlite3_close(db)
             db = nil
             return nil

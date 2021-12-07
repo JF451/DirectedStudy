@@ -28,8 +28,8 @@
 		9DCADEDD2726038700F3570F /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9DCADEDC2726038700F3570F /* SDWebImageSwiftUI */; };
 		9DCADEDF2726082B00F3570F /* DbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCADEDE2726082B00F3570F /* DbHelper.swift */; };
 		9DCADEE02726082B00F3570F /* DbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCADEDE2726082B00F3570F /* DbHelper.swift */; };
-		9DCADEE2272618DC00F3570F /* Photos.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9DCADEE1272618A500F3570F /* Photos.sqlite */; };
-		9DCADEE32726191100F3570F /* Photos.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9DCADEE1272618A500F3570F /* Photos.sqlite */; };
+		9DF318E8275EFA2E008D8F8F /* Photos.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9DF318E7275EFA2E008D8F8F /* Photos.sqlite */; };
+		9DF318E9275EFA2E008D8F8F /* Photos.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9DF318E7275EFA2E008D8F8F /* Photos.sqlite */; };
 		9DF9C1D6275C2C0A00D2C39D /* PicRecommender.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9DF9C1D5275C2C0A00D2C39D /* PicRecommender.mlmodel */; };
 		9DF9C1D7275C2C0A00D2C39D /* PicRecommender.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9DF9C1D5275C2C0A00D2C39D /* PicRecommender.mlmodel */; };
 /* End PBXBuildFile section */
@@ -71,7 +71,7 @@
 		9DCADEC32726032900F3570F /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		9DCADEC52726032900F3570F /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		9DCADEDE2726082B00F3570F /* DbHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbHelper.swift; sourceTree = "<group>"; };
-		9DCADEE1272618A500F3570F /* Photos.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Photos.sqlite; sourceTree = "<group>"; };
+		9DF318E7275EFA2E008D8F8F /* Photos.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Photos.sqlite; sourceTree = SOURCE_ROOT; };
 		9DF9C1D5275C2C0A00D2C39D /* PicRecommender.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PicRecommender.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,8 +137,8 @@
 		9DCADE9E2726032600F3570F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				9DF318E7275EFA2E008D8F8F /* Photos.sqlite */,
 				9D58C1E42753216600980941 /* Users.sqlite */,
-				9DCADEE1272618A500F3570F /* Photos.sqlite */,
 				9DCADE9F2726032600F3570F /* DirectStudyApp.swift */,
 				9DCADEA12726032900F3570F /* Assets.xcassets */,
 				9DCADEDE2726082B00F3570F /* DbHelper.swift */,
@@ -318,7 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D58C1E52753216600980941 /* Users.sqlite in Resources */,
-				9DCADEE2272618DC00F3570F /* Photos.sqlite in Resources */,
+				9DF318E8275EFA2E008D8F8F /* Photos.sqlite in Resources */,
 				9DCADECB2726032900F3570F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,7 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D58C1E62753216600980941 /* Users.sqlite in Resources */,
-				9DCADEE32726191100F3570F /* Photos.sqlite in Resources */,
+				9DF318E9275EFA2E008D8F8F /* Photos.sqlite in Resources */,
 				9DCADECC2726032900F3570F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
